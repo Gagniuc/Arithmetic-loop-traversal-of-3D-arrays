@@ -1,6 +1,4 @@
-# One-for-loop-3D-traversal-with-arithmetic-operators
-One for-loop 3D traversal with arithmetic operators
-
+# One for-loop 3D traversal with arithmetic operators
 
 In this example, a 3D array <i>A</i> is defined, which represents a multi-dimensional structure containing strings and numbers. The code then initializes several variables, including <i>t</i> (a string for storing the result), <i>s</i> (the number of matrices or “layers” in <i>A</i>), <i>m</i> (the number of rows in each matrix), <i>n</i> (the number of columns in each matrix), and <i>i</i>, <i>j</i>, <i>d</i>, and <i>k</i> as iteration and indexing variables. A loop runs from 0 to <i>q</i>, where <i>q</i> is calculated as the product of <i>n</i> (number of columns), <i>m</i> (number of rows), and <i>s</i> (number of matrices), which effectively iterates through all elements in the 3D array <i>A</i>. Within the loop, the code calculates <i>k</i> as the modulo of <i>v</i> divided by the product of <i>m</i> and <i>n</i>. Variable <i>j</i> is calculated as the modulo of <i>v</i> divided by <i>n</i>, <i>i</i> is calculated as (<i>k</i> - <i>j</i>) divided by <i>n</i>, and <i>d</i> is calculated as (<i>v</i> - <i>k</i>) divided by the product of <i>m</i> and <i>n</i>. These calculations help determine the current position within the 3D array <i>A</i>. The code appends information to the <i>t</i> string for each iteration, showing the current index <i>v</i> and the corresponding value in the <i>A</i> array at the position [<i>d</i>][<i>i</i>][<i>j</i>]. A line break is also added to separate the entries. At the end of the loop, the code prints the contents of the t string. Thus, this code iterates over the entire 3D array <i>A</i> and prints the indices <i>d</i>, <i>i</i>, <i>j</i>, and the corresponding element from the array, effectively displaying the entire content of the 3D array with their indices. Nevertheless, the novelty here is represented by the way variables <i>i</i>, <i>j</i>, and <i>d</i> are computed in order to iterate over the elements of the 3D array <i>A</i>:
 
@@ -73,6 +71,132 @@ for v in range(q):
 
 print(t)
 ``` 
+
+
+
+
+```javascript
+let A = [
+        [
+   ["a", 55, 146],
+   ["b", 34, 124],
+   ["c", 96, 564],
+   [100, 12, "d"],
+        ],
+        [
+   ["e", 88, 146],
+   ["f", 34, 124],
+   ["g", 96, 564],
+   [100, 12, "h"],
+        ],
+        [
+   ["i", 88, 146],
+   ["j", 34, 124],
+   ["k", 96, 564],
+   [100, 12, "k"],
+        ],
+        [
+   ["m", 88, 146],
+   ["n", 34, 124],
+   ["o", 96, 564],
+   [100, 12, "p"],
+        ],
+        [
+   ["q", 88, 146],
+   ["r", 34, 124],
+   ["s", 96, 564],
+   [100, 12, "t"],
+        ]
+        ];
+
+let t = "";
+
+let s = A.length;       // 5 matrices
+let m = A[0].length;    // 4 rows
+let n = A[0][0].length; // 3 columns
+
+let i = 0;
+let j = 0;
+let d = 0;
+let k = 0;
+
+let q = n * m * s;
+
+for (let v = 0; v < q; v++){
+    
+   k = v % (m*n);
+   
+   j = v % n;
+   i = (k-j) / n;
+   d = (v-k) / (m*n);
+   
+   t += v + " A["+d+"]["+i+"]["+j+"]=";
+   t += A[d][i][j] + "\n";
+}
+
+print(t);
+``` 
+
+
+
+
+```matlab
+A = {
+    {
+        {'a', 55, 146},
+        {'b', 34, 124},
+        {'c', 96, 564},
+        {100, 12, 'd'}
+    },
+    {
+        {'e', 88, 146},
+        {'f', 34, 124},
+        {'g', 96, 564},
+        {100, 12, 'h'}
+    },
+    {
+        {'i', 88, 146},
+        {'j', 34, 124},
+        {'k', 96, 564},
+        {100, 12, 'k'}
+    },
+    {
+        {'m', 88, 146},
+        {'n', 34, 124},
+        {'o', 96, 564},
+        {100, 12, 'p'}
+    },
+    {
+        {'q', 88, 146},
+        {'r', 34, 124},
+        {'s', 96, 564},
+        {100, 12, 't'}
+    }
+};
+
+t = "";
+
+s = size(A, 1);        % 5 matrices
+m = size(A{1}, 1);     % 4 rows
+n = size(A{1}{1}, 2);  % 3 columns
+
+q = n * m * s;
+
+for v = 0:(q-1)
+
+    k = mod(v, m * n);
+
+    j = mod(v, n) + 1;
+    i = (k - j + 1) / n + 1;
+    d = (v - k) / (m * n) + 1;
+
+    t = t + sprintf('%d A{%d}{%d}{%d}=%s\n', ...
+    v, d, i, j, mat2str(A{d}{i}{j}));
+end
+
+disp(t);
+``` 
+
 
 ```text
 Output:
