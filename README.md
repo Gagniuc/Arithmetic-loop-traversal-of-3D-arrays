@@ -9,3 +9,128 @@ We define $k = v \% (m \times n)$, $j = v \% n$, $i = \frac{(k-j)}{n}$, and $d =
 
 
 Namely, variable <i>k</i> represents the position within a matrix (subarray), and variable <i>i</i> is calculated as (<i>k</i> - <i>j</i>) / <i>n</i> (integer division by using the Python operator: “//”), which is the result of integer division between <i>k</i> - <i>j</i> and the number of columns <i>n</i>. Thus, it calculates the row index within the current matrix. Variable <i>j</i> is calculated as the remainder of <i>v</i> divided by the number of columns <i>n</i> (<i>j</i> = <i>v</i> % <i>n</i>). This gives us the column index within the current matrix. Variable <i>d</i> is calculated as (<i>v</i> - <i>k</i>) / (<i>m</i> × <i>n</i>), which is the result of integer division between (<i>v</i> - <i>k</i>) and the total number of elements in a matrix (<i>m</i> × <i>n</i>). Thus, it calculates the index of the current matrix in the 3D array.
+
+```python
+A = [
+    [
+        ["a", 55, 146],
+        ["b", 34, 124],
+        ["c", 96, 564],
+        [100, 12, "d"],
+    ],
+    [
+        ["e", 88, 146],
+        ["f", 34, 124],
+        ["g", 96, 564],
+        [100, 12, "h"],
+    ],
+    [
+        ["i", 88, 146],
+        ["j", 34, 124],
+        ["k", 96, 564],
+        [100, 12, "k"],
+    ],
+    [
+        ["m", 88, 146],
+        ["n", 34, 124],
+        ["o", 96, 564],
+        [100, 12, "p"],
+    ],
+    [
+        ["q", 88, 146],
+        ["r", 34, 124],
+        ["s", 96, 564],
+        [100, 12, "t"],
+    ]
+    ]
+
+t = ""
+
+s = len(A)           # 5 matrices
+m = len(A[0])        # 4 rows
+n = len(A[0][0])     # 3 columns
+
+i = 0
+j = 0
+d = 0
+k = 0
+
+q = n * m * s
+
+for v in range(q):
+    
+    k = v % (m*n)
+    
+    j = v % n
+    i = (k-j) // n
+    d = (v-k) // (m*n)
+    
+    t += f"{v} A[{d}][{i}][{j}]="
+    t += f"{A[d][i][j]}\n"
+
+print(t)
+``` 
+
+```text
+Output:
+0 A[0][0][0]=a
+1 A[0][0][1]=55
+2 A[0][0][2]=146
+3 A[0][1][0]=b
+4 A[0][1][1]=34
+5 A[0][1][2]=124
+6 A[0][2][0]=c
+7 A[0][2][1]=96
+8 A[0][2][2]=564
+9 A[0][3][0]=100
+10 A[0][3][1]=12
+11 A[0][3][2]=d
+12 A[1][0][0]=e
+13 A[1][0][1]=88
+14 A[1][0][2]=146
+15 A[1][1][0]=f
+16 A[1][1][1]=34
+17 A[1][1][2]=124
+18 A[1][2][0]=g
+19 A[1][2][1]=96
+20 A[1][2][2]=564
+21 A[1][3][0]=100
+22 A[1][3][1]=12
+23 A[1][3][2]=h
+24 A[2][0][0]=i
+25 A[2][0][1]=88
+26 A[2][0][2]=146
+27 A[2][1][0]=j
+28 A[2][1][1]=34
+29 A[2][1][2]=124
+30 A[2][2][0]=k
+31 A[2][2][1]=96
+32 A[2][2][2]=564
+33 A[2][3][0]=100
+34 A[2][3][1]=12
+35 A[2][3][2]=k
+36 A[3][0][0]=m
+37 A[3][0][1]=88
+38 A[3][0][2]=146
+39 A[3][1][0]=n
+40 A[3][1][1]=34
+41 A[3][1][2]=124
+42 A[3][2][0]=o
+43 A[3][2][1]=96
+44 A[3][2][2]=564
+45 A[3][3][0]=100
+46 A[3][3][1]=12
+47 A[3][3][2]=p
+48 A[4][0][0]=q
+49 A[4][0][1]=88
+50 A[4][0][2]=146
+51 A[4][1][0]=r
+52 A[4][1][1]=34
+53 A[4][1][2]=124
+54 A[4][2][0]=s
+55 A[4][2][1]=96
+56 A[4][2][2]=564
+57 A[4][3][0]=100
+58 A[4][3][1]=12
+59 A[4][3][2]=t
+```
