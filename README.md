@@ -11,6 +11,9 @@ $$d = \frac{v - k}{m \times n}$$
 
 Namely, variable <i>k</i> represents the position within a matrix (subarray), and variable <i>i</i> is calculated as (<i>k</i> - <i>j</i>) / <i>n</i> (integer division by using the Python operator: “//”), which is the result of integer division between <i>k</i> - <i>j</i> and the number of columns <i>n</i>. Thus, it calculates the row index within the current matrix. Variable <i>j</i> is calculated as the remainder of <i>v</i> divided by the number of columns <i>n</i> (<i>j</i> = <i>v</i> % <i>n</i>). This gives us the column index within the current matrix. Variable <i>d</i> is calculated as (<i>v</i> - <i>k</i>) / (<i>m</i> × <i>n</i>), which is the result of integer division between (<i>v</i> - <i>k</i>) and the total number of elements in a matrix (<i>m</i> × <i>n</i>). Thus, it calculates the index of the current matrix in the 3D array.
 
+
+## Example in Python:
+
 ```python
 A = [
     [
@@ -73,7 +76,7 @@ print(t)
 ``` 
 
 
-
+## Example in Javascript:
 
 ```javascript
 let A = [
@@ -137,8 +140,7 @@ for (let v = 0; v < q; v++){
 print(t);
 ``` 
 
-
-
+## Example in Matlab:
 
 ```matlab
 A = {
